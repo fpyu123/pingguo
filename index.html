@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复兴国际</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 页面整体样式 */
+        body {
+            min-height: 100vh;
+            background-image: url('unnamed.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            font-family: "Microsoft YaHei", "Heiti SC", sans-serif;
+            background-color: #000;
+        }
+
+        /* 链接容器 */
+        .link-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6); /* 稍微加深遮罩，突出单色字体 */
+            padding: 20px 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2); 
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 修改后的单色链接样式 */
+        .link-item {
+            display: block;
+            font-size: 26px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 25px 0;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+
+            /* 设置为纯色：亮金色 */
+            color: #FFD700; 
+            
+            /* 清除之前的渐变相关设置 */
+            background: none;
+            -webkit-background-clip: initial;
+            background-clip: initial;
+            -webkit-text-fill-color: initial;
+
+            /* 保留文字阴影，防止背景复杂时看不清 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* 鼠标悬停效果 */
+        .link-item:hover {
+            transform: scale(1.05);
+            color: #FFFFFF; /* 悬停时变为白色，增加视觉反馈 */
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .link-item {
+                font-size: 20px;
+                margin: 15px 0;
+            }
+            .link-container {
+                padding: 15px 25px;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="link-container">
+        <a href="https://m518.mos077.com/" class="link-item">皇冠会员入口1</a>
+        <a href="https://m473.mos077.com/" class="link-item">皇冠会员入口2</a>
+        <a href="https://mos066.com/f" class="link-item">皇冠会员入口3</a>
+        <a href="https://ag.hga030.com/" class="link-item">皇冠代理入口1</a>
+        <a href="https://ag.hga030.com/" class="link-item">皇冠代理入口2</a>
+        <a href="https://ag.hga030.com/" class="link-item">皇冠代理入口3</a>
+    </div>
+</body>
+</html>
