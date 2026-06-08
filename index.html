@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>复兴国际</title>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <style>
         /* 全局样式重置 */
         * {
@@ -32,12 +33,33 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.6); /* 稍微加深遮罩，突出单色字体 */
+            background-color: rgba(0, 0, 0, 0.6); 
             padding: 20px 40px;
             border-radius: 15px;
             border: 1px solid rgba(255, 215, 0, 0.2); 
             backdrop-filter: blur(8px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            min-width: 320px;
+        }
+
+        /* 验证提示文字 */
+        .verify-title {
+            color: #FFD700;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* 验证码居中容器 */
+        .captcha-box {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        /* 默认隐藏链接列表 */
+        #links-content {
+            display: none;
         }
 
         /* 修改后的单色链接样式 */
@@ -49,24 +71,18 @@
             margin: 25px 0;
             padding: 5px 10px;
             transition: all 0.3s ease;
-
-            /* 设置为纯色：亮金色 */
             color: #FFD700; 
-            
-            /* 清除之前的渐变相关设置 */
             background: none;
             -webkit-background-clip: initial;
             background-clip: initial;
             -webkit-text-fill-color: initial;
-
-            /* 保留文字阴影，防止背景复杂时看不清 */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         /* 鼠标悬停效果 */
         .link-item:hover {
             transform: scale(1.05);
-            color: #FFFFFF; /* 悬停时变为白色，增加视觉反馈 */
+            color: #FFFFFF; 
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
         }
 
@@ -86,19 +102,32 @@
 <body>
     <div class="link-container">
         <div id="verification-zone">
-            <div class="verify-title">正在验证加载</div>
+            <div class="verify-title">请完成安全验证以继续访问</div>
             <div class="captcha-box">
                 <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-callback="onVerifySuccess"></div>
             </div>
         </div>
-    <div class="link-container">
-        <a href="https://m518.mos077.com/" class="link-item">皇冠会员入口1</a>
-        <a href="https://m473.mos077.com/" class="link-item">皇冠会员入口2</a>
-        <a href="https://mos066.com/f" class="link-item">皇冠会员入口3</a>
-        <a href="https://ag.hga030.com/" class="link-item">皇冠代理入口1</a>
-        <a href="https://ag.hga030.com/" class="link-item">皇冠代理入口2</a>
-        <a href="https://ag.hga030.com/" class="link-item">皇冠代理入口3</a>
+
+        <div id="links-content">
+            <a href="https://m518.mos077.com/" class="link-item">皇冠会员入口1</a>
+            <a href="https://m473.mos077.com/" class="link-item">皇冠会员入口2</a>
+            <a href="https://mos066.com/f" class="link-item">皇冠会员入口3</a>
+            <a href="https://ag.hga030.com/" class="link-item">皇冠代理入口1</a>
+            <a href="https://ag.hga030.com/" class="link-item">皇冠代理入口2</a>
+            <a href="https://ag.hga030.com/" class="link-item">皇冠代理入口3</a>
+        </div>
     </div>
-    <iframe src="/qqtime/qqtime.html" style="position:fixed;top:0;width:0;height:0;left:-1000px;border:0"></iframe>
+
+    <script>
+        // 当用户通过 Cloudflare 智能验证后，会自动触发这个函数
+        function onVerifySuccess(token) {
+            if (token) {
+                // 隐藏验证框
+                document.getElementById('verification-zone').style.display = 'none';
+                // 显示真正的链接
+                document.getElementById('links-content').style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
