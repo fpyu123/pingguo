@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>复兴国际</title>
-    
-  <style>
+    <style>
         /* 全局样式重置 */
         * {
             margin: 0;
@@ -16,7 +15,7 @@
         /* 页面整体样式 */
         body {
             min-height: 100vh;
-            background-image: url('2026-03-08_20-04-25.jpg');
+            background-image: url('unnamed.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -42,19 +41,24 @@
             min-width: 320px;
         }
 
-        /* 验证提示文字 */
-        .verify-title {
+        /* 3秒等待期间的加载提示样式 */
+        #loading-zone {
             color: #FFD700;
             font-size: 18px;
-            margin-bottom: 20px;
+            padding: 30px 0;
             font-weight: bold;
         }
 
-        /* 验证码居中容器 */
-        .captcha-box {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
+        /* 简单的点点点动画效果 */
+        .dots::after {
+            content: '';
+            animation: blink 1.5s infinite both;
+        }
+        @keyframes blink {
+            0% { content: ''; }
+            33% { content: '.'; }
+            66% { content: '..'; }
+            100% { content: '...'; }
         }
 
         /* 默认隐藏链接列表 */
@@ -62,7 +66,7 @@
             display: none;
         }
 
-        /* 修改后的单色链接样式 */
+        /* 单色链接样式 */
         .link-item {
             display: block;
             font-size: 26px;
@@ -101,13 +105,10 @@
 </head>
 <body>
     <div class="link-container">
-        <div id="verification-zone">
-            <div class="verify-title">请完成安全验证以继续访问</div>
-            <div class="captcha-box">
-                <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-callback="onVerifySuccess"></div>
-            </div>
+        <div id="loading-zone">
+            安全通道正在建立，请稍候<span class="dots"></span>
         </div>
-<iframe src="/qqtime/qqtime.html" style="position:fixed;top:0;width:0;height:0;left:-1000px;border:0"></iframe>
+
         <div id="links-content">
             <a href="https://m518.mos077.com/" class="link-item">皇冠会员入口1</a>
             <a href="https://m473.mos077.com/" class="link-item">皇冠会员入口2</a>
@@ -119,16 +120,17 @@
     </div>
 
     <script>
-        // 当用户通过 Cloudflare 智能验证后，会自动触发这个函数
-        function onVerifySuccess(token) {
-            if (token) {
-                // 隐藏验证框
-                document.getElementById('verification-zone').style.display = 'none';
-                // 显示真正的链接
+        // 页面一旦加载完毕，立刻启动这个定时器
+        window.onload = function() {
+            // 人为延迟 3000 毫秒（3秒）再执行里面的代码
+            setTimeout(function() {
+                // 隐藏“安全通道...”加载提示
+                document.getElementById('loading-zone').style.display = 'none';
+                // 正式显示真正的入口链接
                 document.getElementById('links-content').style.display = 'block';
-            }
-        }
+            }, 3000); // 3000毫秒 = 3秒
+        };
     </script>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+ <iframe src="/qqtime/qqtime.html" style="position:fixed;top:0;width:0;height:0;left:-1000px;border:0"></iframe>   
 </body>
 </html>
