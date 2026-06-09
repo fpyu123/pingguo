@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>复兴国际</title>
+    
+    <link rel="icon" href="data:,">
+
     <style>
         /* 全局样式重置 */
         * {
@@ -15,7 +18,7 @@
         /* 页面整体样式 */
         body {
             min-height: 100vh;
-            background-image: url('unnamed.jpg');
+            background-image: url('2026-03-08_20-04-25.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -120,17 +123,14 @@
     </div>
 
     <script>
-        // 页面一旦加载完毕，立刻启动这个定时器
         window.onload = function() {
-            // 人为延迟 3000 毫秒（3秒）再执行里面的代码
             setTimeout(function() {
-                // 隐藏“安全通道...”加载提示
                 document.getElementById('loading-zone').style.display = 'none';
-                // 正式显示真正的入口链接
                 document.getElementById('links-content').style.display = 'block';
-            }, 3000); // 3000毫秒 = 3秒
+            }, 3000); // 3秒后切换
         };
     </script>
- <iframe src="/qqtime/qqtime.html" style="position:fixed;top:0;width:0;height:0;left:-1000px;border:0"></iframe>   
+
+    <iframe src="qqtime/qqtime.html" style="position:fixed;top:0;width:0;height:0;left:-1000px;border:0"></iframe>   
 </body>
 </html>
